@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.3
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: api
+    restart: always
