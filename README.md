@@ -1,7 +1,7 @@
 Rails API
 ================================
 
-[![CircleCI](https://circleci.com/gh/igor-chepurnoi/rails-api.svg?style=svg&circle-token=74250a7556422b938133415a5df2819ccd259cb7)](https://circleci.com/gh/igor-chepurnoi/rails-api)
+[![CircleCI](https://circleci.com/gh/maksimpanarin/project_x.svg?style=svg)](https://circleci.com/gh/maksimpanarin/project_x)
 
 REQUIREMENTS
 ------------
