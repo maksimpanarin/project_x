@@ -1,0 +1,49 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/api
+    docker:
+      - image: circleci/ruby:2.7.2
+      - image: circleci/postgres:11.3
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circleci_test
+    steps:
+      - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: api-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: api-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Setup Environment
+          command: cp .env.testing.example .env
+
+      - run:
+          name: Prepare Database
+          command: bin/rails db:migrate
+
+      - run:
+          name: Run Tests
+          command: bundle exec rspec
+
+      - run:
+          name: Check code style
+          command: bundle exec rubocop
+
+      - store_artifacts:
+          path: coverage
