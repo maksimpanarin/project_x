@@ -9,16 +9,17 @@ default: &default
   encoding: unicode
   username: postgres
   password: password
-  host: 0.0.0.0
   pool: 5
 
 development:
   <<: *default
   database: api
+  host: 0.0.0.0
 
 test:
   <<: *default
   database: api_test
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
