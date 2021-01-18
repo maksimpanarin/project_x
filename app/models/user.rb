@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Schema information
 
 # Table name: users
@@ -9,7 +11,6 @@
 # active     :boolean      default: true
 # created_at :datetime     not null
 # updated_at :datetime     not null
-
 
 class User < ApplicationRecord
 end
