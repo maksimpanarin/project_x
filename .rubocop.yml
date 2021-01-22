@@ -1,0 +1,24 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'test/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/BlockLength:
+  Max: 50
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
