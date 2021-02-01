@@ -1,7 +1,7 @@
 Rails API
 ================================
 
-[![CircleCI](https://circleci.com/gh/maksimpanarin/project_x.svg?style=svg)](https://circleci.com/gh/maksimpanarin/project_x)
+![Project](https://github.com/maksimpanarin/project_x/workflows/Project/badge.svg?branch=master)
 
 REQUIREMENTS
 ------------
