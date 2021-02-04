@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    resource.save
+    resource.save!
     render json: resource
   end
 end
