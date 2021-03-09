@@ -56,4 +56,5 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails'
+gem 'kaminari'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
