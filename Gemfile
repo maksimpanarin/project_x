@@ -58,4 +58,5 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails'
 gem 'kaminari'
+gem 'kaminari-api-meta-data', require: 'kaminari_api_meta_data'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

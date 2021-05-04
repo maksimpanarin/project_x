@@ -135,6 +135,8 @@ GEM
     kaminari-activerecord (1.2.1)
       activerecord
       kaminari-core (= 1.2.1)
+    kaminari-api-meta-data (1.0.1)
+      kaminari (~> 1.1)
     kaminari-core (1.2.1)
     listen (3.4.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -290,6 +292,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   kaminari
+  kaminari-api-meta-data
   listen (~> 3.3)
   pg (~> 1.2)
   pry (~> 0.13.1)

@@ -2,10 +2,11 @@
 
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  include ::KaminariApiMetaData
 
   def index
     @users = User.order(:id).page(params[:page])
-    render json: @users
+    render json: { users: @users, meta: meta_data(@users) }
   end
 
   def show
