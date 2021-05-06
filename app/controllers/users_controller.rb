@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order(:id).page(params[:page])
-    render json: { users: @users, meta: meta_data(@users) }
+    render json: { data: @users, meta: meta_data(@users) }
   end
 
   def show

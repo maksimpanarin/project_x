@@ -15,22 +15,22 @@ RSpec.describe 'GET /users', type: :request do
       FactoryBot.create_list(:user,3)
     end
 
-    # it "returns http success" do
-    #   expect(response).to have_http_status(:success)
-    # end
+    it "returns http success" do
+      get url, headers: auth_headers
+      expect(response).to have_http_status(:success)
+    end
 
     it 'returns all users' do
       get url, headers: auth_headers
       body = JSON.parse response.body
-      expect(body["users"].count).to eq(4)
+      expect(body["data"].count).to eq(4)
     end
 
     it 'users sortered by id' do
       get url, headers: auth_headers
       body = JSON.parse response.body
-      expect(body["users"].pluck("id")).to eq(User.order(:id).pluck(:id))
+      expect(body["data"].pluck("id")).to eq(User.order(:id).pluck(:id))
     end
-
 
   # describe 'POST /users/id', type: :request do
   #
