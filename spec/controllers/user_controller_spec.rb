@@ -21,14 +21,14 @@ RSpec.describe 'GET /users', type: :request do
 
     it 'returns all users' do
       get url, headers: auth_headers
-
-      expect(response_body.count).to eq(4)
+      body = JSON.parse response.body
+      expect(body["users"].count).to eq(4)
     end
 
     it 'users sortered by id' do
       get url, headers: auth_headers
       body = JSON.parse response.body
-      expect(body.pluck("id")).to eq(User.order(:id).pluck(:id))
+      expect(body["users"].pluck("id")).to eq(User.order(:id).pluck(:id))
     end
 
 
