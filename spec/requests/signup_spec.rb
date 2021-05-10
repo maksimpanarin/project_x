@@ -31,12 +31,12 @@ RSpec.describe 'POST /signup', type: :request do
     end
 
     it 'returns bad request status' do
-      expect(response.status).to eq 400
+      expect(response.status).to eq 422
     end
 
     it 'returns validation errors' do
       result = JSON.parse(response.body)
-      expect(result['errors'].first['title']).to eq('Bad Request')
+      expect(result['errors'].first['message']).to eq('Email has already been taken')
     end
   end
 end

@@ -1,24 +1,17 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  def render_resource(resource)
-    if resource.errors.empty?
-      render json: resource
-    else
-      validation_error(resource)
-    end
+  respond_to :json
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
+  def render_unprocessable_entity_response(exception)
+    render json: { message: 'Validation Failed',
+                   errors: ErrorSerializer.serialize(exception.record.errors) },
+           status: :unprocessable_entity
   end
 
-  def validation_error(resource)
-    render json: {
-      errors: [
-        {
-          status: '400',
-          title: 'Bad Request',
-          detail: resource.errors,
-          code: '100'
-        }
-      ]
-    }, status: :bad_request
+  def render_not_found_response(exception)
+    render json: { message: 'Not Found', error: exception.message }, status: :not_found
   end
 end
