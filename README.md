@@ -9,7 +9,7 @@ REQUIREMENTS
 The minimum requirements for this project:
 
 - Ruby 2.7.2
-- Rails 6.1.0
+- Rails 6.1.4.6
 - Postgres 11.3
 
 Installing using Docker
