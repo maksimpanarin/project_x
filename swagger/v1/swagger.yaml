@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: Rails API - max
+  version: 1.0.0
+
+servers:
+  - url: /
+    description: basic URL
+
+paths:
+  /login:
+    post:
+      summary: Log in by email.
+      tags:
+        - Authentification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUser'
+      responses:
+        '200':
+          description: The User has been successfully logging in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBodyUser'
+        '401':
+          description: Invalid Email or Password.
+  /logout:
+    delete:
+      summary: Logout.
+      tags:
+        - Authentification
+      responses:
+        '204':
+          description: The session destroyed
+  /signup:
+    post:
+      summary: Creates a new user.
+      tags:
+        - Registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUser'
+      responses:
+        '200':
+          description: The User has been successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBodyUser'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBodyBadRequest'
+
+        '422':
+          description: Validation Failed
+
+components:
+  schemas:
+    RequestUser:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/RequestBodyUser'
+
+    RequestBodyUser:
+      properties:
+        email:
+          type: string
+          maxLength: 255
+          example: user1@example.com
+        password:
+          type: string
+          maxLength: 255
+          example: password
+      required:
+        - email
+        - password
+
+    ResponseBodyUser:
+      required:
+        - email
+      properties:
+        id:
+          type: integer
+          example: 1
+        created_at:
+          type: string
+          example: "2021-02-01T15:49:32.838Z"
+        updated_at:
+          type: string
+          example: "2021-02-01T15:49:32.838Z"
+        email:
+          type: string
+          maxLength: 255
+          example: user@example.com
+
+    ResponseBodyBadRequest:
+      example: Bad Request
