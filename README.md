@@ -36,3 +36,4 @@ chown -R www-data:www-data .
 ```
 
 After this steps, you can access your app from [http://localhost:3000](http://localhost:3000).
+API documentation - [http://localhost:3000/api-docs/index.html]
